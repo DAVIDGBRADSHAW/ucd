@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>renamed - edit settings PAGE</title>
+</head>
+<body>
+	{% extends 'base.html'%}
+	{%block title%} edit  ] UR PROFILE PAGE{%endblock%}
+	{%block content%}
+	
+	{% if user.is_authenticated %}
+			{% if user.id == profile.user.id%}
+
+			<h1>....ST</h1>
+<br>
+<br>
+<h1> edit ....</h1>
+	<div class="form-group">
+<form method="POST" enctype="multipart/ multipart/form-data">
+			{% csrf_token %}
+
+			{{ form.as_p}}
+			<button type="button" class="btn btn-secondary"> EDIT PROFILE </button>
+</div>
+		{% else %}
+ 			 1st lione here English goes un here...........
+		{% endif %}
+{% else %}
+		
+2nd line
+{% endif %}
+
+{% endblock %}

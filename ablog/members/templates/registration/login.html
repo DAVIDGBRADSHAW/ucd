@@ -1,0 +1,27 @@
+<body>
+	{% extends 'base.html'%}
+	{%block title%}LOGIN{%endblock%}
+	{%block content%}
+
+	<h1>  THIS PAGE IS login in</h1>
+	<br><br>
+{{user.profile.bio}}
+<div class="form-group">
+		<form method="POST">
+				{% csrf_token%}
+			
+<div class="form-group">
+	<input type="text" class="form-control" name="username" placeholder="your userame">
+</div>
+<br><br>		
+<div class="form-group">
+	<input type="password" class="form-control" name="password" placeholder="ur password please">
+</div>
+<br><br>
+		<button class="btn btn-secondary">LOGIN</button>
+</div>
+</form>
+<br><br>
+ UR NOT REGISTERED , U NEED TO 7nbsp;<A href="{% url 'register'%}.SIGNUP">SIGNUP</A>
+	</div>
+	

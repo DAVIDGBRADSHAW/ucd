@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title> UPDATE PROFILE</title>
+</head>
+<body>
+	{% extends 'base.html'%}
+	{%block title%}UPDATE PROFILE {%endblock%}
+	{%block content%}
+
+	<h1>  THIS PAGE IS Edit SETTING</h1>
+	<br><br>
+{{user.profile.bio}}
+	<div class="form-group">
+		<form method="POST">
+				{% csrf_token%}
+				{{ form.as_p}}
+				<button class="btn btn-secondary">UPDATE PROFILE</button>
+		</form>
+	</div>
+	{% endblock%}
+</body>
+</html>

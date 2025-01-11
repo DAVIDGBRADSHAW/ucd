@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title> REGISTER</title>
+</head>
+<body>
+	{% extends 'base.html'%}
+	{%block title%} REGISTER{%endblock%}
+	{%block content%}
+
+	<h1> Register</h1>
+	<br><br>
+
+	<div class="form-group">
+		<form method="POST">
+				{% csrf_token%}
+				{{ form.as_p}}
+				<button class="btn btn-secondary">REGISTER</button>
+		</form>
+	</div>
+	{% endblock%}
+</body>
+</html>

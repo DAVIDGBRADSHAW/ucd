@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+<body>
+	{% extends 'base.html'%}
+	{% load static %}
+
+	{%block title%} EDIT user PROFILE {%endblock%}
+	{%block content%}
+	<h1> EDIT USER PROFILE</h1>
+	<br>
+	<br>
+		<div class="card mb-3">
+			<div class="row g-0">
+				<div class="col-md-4">
+	{%  if page_user.profile.profile_pic%}
+					<img src="{{ post.author.profile.profile_pics.url}}" width="600" alt="english goes here" class="rounded-circle">
+	{%  else%}
+			<img src="{% static 'theblog/images/default_profile_pic.png'%}" width="600" alt="english goes here" class="rounded-circle">
+	{%  endif%}
+			</div>
+			<div class="col-md-8">
+				<div class="card-body">
+					<h5 class="card-title">
+						{{ page_user.user.first_name}}
+						{{ page_user.user.last_name}}
+					</h5>
+				
+	<br><br>
+	<p class="card-text">DAVE RUGBY - ENGLISH GOES IN HERE.
+		<img src="{{ page_profile.profile.bio.url}}" width="600" alt="english goes here" class="rounded-circle">
+	</p>
+	
+					</small></p>
+				</div>
+			</div>
+		</div>
+	</div>
+	<p class="small text-muted">
+		{%  if page_user.website_url%}
+			<a href="{{ page_user.website_url}}"> web</a>
+		|	{%  endif%}
+		
+	<a href=" {% url 'show_profile_page' post.author.profile.id %}  "> PROFILE PAGE</a>		&nbsp;&nbsp;|&nbsp;&nbsp;
+	{% if page_user.profile.website_url%}
+	&nbsp;&nbsp;|&nbsp;&nbsp;
+		<a href="{{post.author.websites}}">PROFILE</a>
+		&nbsp;&nbsp;|&nbsp;&nbsp;
+		<a href="http://www.bradshawwebsites.ie">Bradshaw Websites - Developer</a>&nbsp;&nbsp;|&nbsp;&nbsp;
+	{% endif%}
+	
+	{% if page_user.profile.facebook_url%}
+		<a href="http://www.facebook.com">Facebook</a>&nbsp;&nbsp;|&nbsp;&nbsp;
+	{% endif%}
+		
+	{% if page_user.instagram_url%}
+		<a href="http://www.instagram.com">INSTAGRAM</a>&nbsp;&nbsp;|&nbsp;&nbsp;
+	{% endif%}
+	
+	{% if page_user.website_url%}
+		<a href=" {{ post.author.profile.website_url}}">BRADSHAW OTHER SITE SHOWING WEBSITE_URL</a>&nbsp;&nbsp;|&nbsp;&nbsp;
+	{% endif%}
+	</p>
+	
+	<p class="card-text" >
+		{{page_user.bio}}
+	</p>
+	
+	{% endblock%}
+	</div>
+	
+	<div class="form-group">
+		<form method="POST" enctype="multipart/ multipart/form-data">
+				{% csrf_token %}
+				{{ form.as_p}}
+			
+				<button type="button" class="btn btn-secondary">UPDATE</button>
+	</div>
+</body>
+</html>
