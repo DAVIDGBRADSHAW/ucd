@@ -1,14 +1,13 @@
 from django.shortcuts import render, get_object_or_404
 from django.views import generic 
 from django.views.generic import DetailView, CreateView
-from django.contrib.auth.forms import UserCreationForm #UserChangeForm
-#PasswordChangeForm
+from django.contrib.auth.forms import UserCreationForm, UserChangeForm, PasswordChangeForm
 from django.contrib.auth.views import PasswordChangeView
 
 # PasswordChangeForm
 from django.urls import reverse_lazy
 from .forms import SignUpForm, EditProfileForm,PasswordChangingForm, ProfilePageForm, ListView, Homeview, Comment
-from theblog.models import Profile, Post, Comment
+from theblog.models import Profile, Post, Category
 from django import forms
 
 class ProfilePageForm(forms.ModelForm):
@@ -18,7 +17,7 @@ class ProfilePageForm(forms.ModelForm):
 
 			widgets ={
 					'bio': forms.TextInput(attrs={'class': 'form-control'}),
-					#'profile_pic': forms.TextInput(attrs={'class': 'form-control'}),
+					'profile_pic': forms.TextInput(attrs={'class': 'form-control'}),
 					'website_url': forms.TextInput(attrs={'class': 'form-control'}),
 					'facebook_url': forms.TextInput(attrs={'class': 'form-control'}),
 					'instagram_url': forms.TextInput(attrs={'class': 'form-control'}),

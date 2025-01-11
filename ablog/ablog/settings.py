@@ -37,6 +37,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+	'theblog',
+	'members',
 ]
 
 MIDDLEWARE = [
@@ -73,16 +75,8 @@ WSGI_APPLICATION = 'ablog.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
-}
-
-
-# Password validation
-# https://docs.djangoproject.com/en/5.1/ref/settings/#auth-password-validators
+import dj_database_url
+DATABASES = {"default": dj_database_url.config(default="postgresql://ucd_user:qyPsyjIhqHzf2vYIUqfDm6aKkrCXiGeY@dpg-cu160nl2ng1s73e78ti0-a.frankfurt-postgres.render.com/ucd")}
 
 AUTH_PASSWORD_VALIDATORS = [
     {
@@ -112,12 +106,20 @@ USE_I18N = True
 USE_TZ = True
 
 
-# Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/5.1/howto/static-files/
+STATIC_URL = '/static/'
+MEDIA_URL = '/media/'
 
-STATIC_URL = 'static/'
+STATICFILES_DIRS = [
+	os.path.join(BASE_DIR, 'static'),
+]
 
-# Default primary key field type
-# https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+STATICFILES_DIRS =[
+	os.path.join(BASE_DIR, 'static')
+]
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+ 
+LOGIN_REDIRECT_URL = 'home'
+LOGOUT_REDIRECT_URL ='home'
